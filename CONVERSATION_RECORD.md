@@ -90,3 +90,11 @@ The user supplied the live Vercel URL `https://shop-ui-react.vercel.app/`, reque
 ## Assistant — Deployment audit
 
 The brand was updated in the browser title, application header, footer, and README. The Vercel deployment was confirmed reachable, and its compiled bundle was checked against the configured API routes. The audit found that the deployment still contained the local API fallback (`http://localhost:3000`), so a production `VITE_API_BASE_URL` must be configured in Vercel and the site redeployed before database-backed catalog and order flows can work publicly.
+
+## User — Production API URL
+
+The user supplied `https://shop-service-api-7mhs.onrender.com/` as the production value for `VITE_API_BASE_URL` and requested that it be updated.
+
+## Assistant — Production API configuration
+
+The products endpoint was verified to return live catalog data. The origin was added to `.env.production` without a trailing slash, and the GitHub Pages workflow was given the same public fallback. The API's CORS preflight currently rejects the Vercel origin, so the backend must allow `https://shop-ui-react.vercel.app` before the deployed browser application can call it successfully.

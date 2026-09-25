@@ -6,6 +6,8 @@ Repository: [github.com/Gabon91/shop-ui-react](https://github.com/Gabon91/shop-u
 
 Live site: [shop-ui-react.vercel.app](https://shop-ui-react.vercel.app/)
 
+Production API: [shop-service-api-7mhs.onrender.com](https://shop-service-api-7mhs.onrender.com/)
+
 ## What works
 
 - Product catalog from `GET /api/products`
@@ -104,9 +106,9 @@ The workflow uses GitHub's official `deploy-pages` action instead of publishing 
 
 ## Deploy to Vercel
 
-The production site is hosted at [shop-ui-react.vercel.app](https://shop-ui-react.vercel.app/). In the Vercel project, open **Settings → Environment Variables**, add `VITE_API_BASE_URL` with the public backend origin, enable it for Production, Preview, and Development as appropriate, and redeploy. Vite embeds this value at build time, so changing it without a new deployment does not update the published application.
+The production site is hosted at [shop-ui-react.vercel.app](https://shop-ui-react.vercel.app/). The public API origin is stored in `.env.production`, so Vercel embeds `https://shop-service-api-7mhs.onrender.com` automatically during production builds. A Vercel `VITE_API_BASE_URL` environment variable may override this value when needed. Vite embeds the value at build time, so any change requires a redeployment.
 
-After deployment, verify that the compiled site no longer references `http://localhost:3000` and that the backend CORS policy permits `https://shop-ui-react.vercel.app`.
+After deployment, verify that the compiled site no longer references `http://localhost:3000` and that the backend CORS policy permits `https://shop-ui-react.vercel.app`. At the time of the latest audit, the API returned a 400 preflight response for this origin, so its CORS allowlist still needs to be updated.
 
 ## Key decisions
 
@@ -119,7 +121,7 @@ After deployment, verify that the compiled site no longer references `http://loc
 
 ## Not completed / integration notes
 
-- A live backend URL, database, and seeded records were not provided in this workspace, so real database persistence cannot be verified here. The expected Pages URL after the first successful deployment is `https://gabon91.github.io/shop-ui-react/`.
+- The production API and seeded products are available, but real browser-based persistence cannot be verified until its CORS allowlist includes `https://shop-ui-react.vercel.app`. The GitHub Pages deployment is available at `https://gabon91.github.io/shop-ui-react/`.
 - Authentication and authorization are outside the provided API contract. The admin screen and customer-list lookup must be protected by the backend before production use.
 - Currency is displayed as USD because the schema does not define a currency.
 - The cart intentionally resets on page refresh to keep the time-boxed implementation small.
