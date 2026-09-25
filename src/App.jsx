@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { createOrder, getCustomers, getOrders, getProducts, updateOrderStatus } from './api/client'
 
-const STATUS_OPTIONS = ['Pending', 'Processing', 'Completed', 'Cancelled']
+const STATUS_OPTIONS = ['Pending', 'Completed', 'Cancelled']
 
 function toList(payload, key) {
   if (Array.isArray(payload)) return payload
@@ -15,6 +15,7 @@ function money(value) {
 }
 
 function orderTotal(order) {
+  if (order.total_amount != null) return Number(order.total_amount)
   if (order.total != null) return Number(order.total)
   const items = order.items || order.order_items || []
   return items.reduce((sum, item) => sum + Number(item.price ?? item.product?.price ?? 0) * Number(item.quantity ?? 1), 0)
@@ -125,7 +126,9 @@ function Checkout({ items, onBack, onSuccess }) {
     setError('')
     try {
       const order = await createOrder({
-        customer: form,
+        customer_name: form.name,
+        customer_email: form.email,
+        customer_phone: form.phone,
         items: items.map(({ product, quantity }) => ({ product_id: product.id, quantity })),
       })
       onSuccess(order)

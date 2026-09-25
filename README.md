@@ -57,11 +57,9 @@ Checkout sends:
 
 ```json
 {
-  "customer": {
-    "name": "Ada Lovelace",
-    "email": "ada@example.com",
-    "phone": "+1 555 0100"
-  },
+  "customer_name": "Ada Lovelace",
+  "customer_email": "ada@example.com",
+  "customer_phone": "+1 555 0100",
   "items": [
     { "product_id": "product-uuid", "quantity": 2 }
   ]

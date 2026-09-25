@@ -47,7 +47,9 @@ describe('storefront', () => {
     await user.click(screen.getByRole('button', { name: /Place order/ }))
 
     await waitFor(() => expect(api.createOrder).toHaveBeenCalledWith({
-      customer: { name: 'Ada Lovelace', email: 'ada@example.com', phone: '+15550100' },
+      customer_name: 'Ada Lovelace',
+      customer_email: 'ada@example.com',
+      customer_phone: '+15550100',
       items: [{ product_id: 'p1', quantity: 1 }],
     }))
     expect(await screen.findByText('Thanks for your order.')).toBeInTheDocument()
