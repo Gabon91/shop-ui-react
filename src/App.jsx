@@ -36,7 +36,7 @@ function Header({ view, setView, cartCount }) {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
         <button onClick={() => setView('shop')} className="flex items-center gap-2 text-left" aria-label="Go to shop">
           <span className="grid h-9 w-9 place-items-center rounded-full bg-ink text-lg text-lime">✦</span>
-          <span className="text-base font-black tracking-tight sm:text-lg">Northstar Goods</span>
+          <span className="text-base font-black tracking-tight sm:text-lg">Gabistar</span>
         </button>
         <nav className="flex items-center rounded-full border border-ink/10 bg-white p-1" aria-label="Primary navigation">
           {nav.map(([key, label]) => (
@@ -399,7 +399,7 @@ export default function App() {
       {view === 'track' && <Tracking />}
       {view === 'admin' && <Admin />}
       {view === 'success' && <Success order={createdOrder} onContinue={() => navigate('shop')} />}
-      <footer className="border-t border-ink/10 px-4 py-8 text-center text-xs text-ink/45">Northstar Goods · Built for speed, kept simple.</footer>
+      <footer className="border-t border-ink/10 px-4 py-8 text-center text-xs text-ink/45">Gabistar · Built for speed, kept simple.</footer>
     </div>
   )
 }

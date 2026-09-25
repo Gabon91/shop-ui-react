@@ -1,8 +1,10 @@
-# Northstar Goods — Mini E-Commerce Frontend
+# Gabistar — Mini E-Commerce Frontend
 
 A deliberately small React storefront for the 180-minute technical assignment. It consumes the supplied REST API, covers the customer journey from discovery to checkout, and includes order tracking plus a lightweight business dashboard.
 
 Repository: [github.com/Gabon91/shop-ui-react](https://github.com/Gabon91/shop-ui-react)
+
+Live site: [shop-ui-react.vercel.app](https://shop-ui-react.vercel.app/)
 
 ## What works
 
@@ -99,6 +101,12 @@ One-time setup:
 5. Push to `main` or `master`, then follow the workflow under the **Actions** tab. Its deployment job exposes the public Pages URL.
 
 The workflow uses GitHub's official `deploy-pages` action instead of publishing a `gh-pages` branch. This matches the required **Source: GitHub Actions** setting and uses short-lived OIDC credentials.
+
+## Deploy to Vercel
+
+The production site is hosted at [shop-ui-react.vercel.app](https://shop-ui-react.vercel.app/). In the Vercel project, open **Settings → Environment Variables**, add `VITE_API_BASE_URL` with the public backend origin, enable it for Production, Preview, and Development as appropriate, and redeploy. Vite embeds this value at build time, so changing it without a new deployment does not update the published application.
+
+After deployment, verify that the compiled site no longer references `http://localhost:3000` and that the backend CORS policy permits `https://shop-ui-react.vercel.app`.
 
 ## Key decisions
 

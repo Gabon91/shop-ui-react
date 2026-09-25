@@ -82,3 +82,11 @@ The user confirmed that the GitHub repository already exists and supplied:
 ## Assistant — Repository connection
 
 The remote was checked before making local Git changes. It contained no branches, so the project could be safely initialized on `main` and pushed as its first commit without overwriting existing history. The README was updated with the confirmed repository link and expected Pages URL.
+
+## User — Vercel deployment and ownership update
+
+The user supplied the live Vercel URL `https://shop-ui-react.vercel.app/`, requested that the shop be renamed from Northstar to **Gabistar**, and asked for a complete comparison between the deployed website and the reference assignment PDF.
+
+## Assistant — Deployment audit
+
+The brand was updated in the browser title, application header, footer, and README. The Vercel deployment was confirmed reachable, and its compiled bundle was checked against the configured API routes. The audit found that the deployment still contained the local API fallback (`http://localhost:3000`), so a production `VITE_API_BASE_URL` must be configured in Vercel and the site redeployed before database-backed catalog and order flows can work publicly.
