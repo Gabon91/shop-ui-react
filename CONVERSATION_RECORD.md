@@ -23,7 +23,7 @@ Requested UI capabilities:
 
 Requested delivery work:
 
-- Use `VITE_API_BASE_URL`, falling back to `http://localhost:3000`.
+- Use `VITE_API_BASE_URL`, falling back to `https://shop-service-api-7mhs.onrender.com/`.
 - Configure Vite's GitHub repository base path.
 - Add a GitHub Actions workflow that triggers on `main` or `master`, uses Node.js 20, installs with `npm ci`, builds with the backend URL, and deploys `dist/` to GitHub Pages.
 - Explain the one-time **Settings → Pages → Source → GitHub Actions** setting.
