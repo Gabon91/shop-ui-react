@@ -84,7 +84,7 @@ npm run build     # production bundle in dist/
 npm run preview   # preview the production bundle
 ```
 
-Current verification: 2 test files, 6 tests passing, and a successful production build.
+Current verification: 2 test files, 6 tests passing, and a successful production build. Vitest is pinned to the Node 20-compatible 3.x line so the local and CI commands share the workflow's required runtime contract.
 
 ## Deploy to GitHub Pages
 
